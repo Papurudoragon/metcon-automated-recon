@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# pass $domain flag from main
+domain=$1
+
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
 
 # coming soon...

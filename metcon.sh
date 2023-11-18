@@ -1,15 +1,21 @@
 #!/bin/bash
 
-echo"██   ██ █████ █████ █████ █████ ██   █"
-echo"█ █ █ █ █       █   █     █   █ █ █  █"
-echo"█  █  █ ███     █   █     █   █ █  █ █"
-echo"█     █ █       █   █     █   █ █   ██"
-echo"█     █ █████   █   █████ █████ █    █"
+echo ""
+echo ""
+echo "██   ██ █████ █████ █████ █████ ██   █"
+echo "█ █ █ █ █       █   █     █   █ █ █  █"
+echo "█  █  █ ███     █   █     █   █ █  █ █"
+echo "█     █ █       █   █     █   █ █   ██"
+echo "█     █ █████   █   █████ █████ █    █"
 
+echo ""
+echo ""
 echo "A Methodology script by ViPv4 (Papv2)"
 sleep 2
 echo ""
 echo ""
+
+source ./src/config.sh
 
 # This script goes through a recon methodology
 # The script will take quite a bit of time to complete, please allow up to 8 hours for full completion.
@@ -17,31 +23,34 @@ echo "The script will take quite a bit of time to complete, please allow adequat
 sleep 3
 echo ""
 
-# We need to run as root for this
-# Check if the script is running as root (sudo privileges)
-if [ "$(id -u)" != "0" ]; then
-    echo "This script must be run as root. Please run with sudo."
-    exit 1
-fi
+# We need to run as root for this ----> borks things for now
+# # Check if the script is running as root (sudo privileges)
+# if [ "$(id -u)" != "0" ]; then
+#     echo "This script must be run as root. Please run with sudo."
+#     exit 1
+# fi
 
 # Iterate through all .sh files in the main directory and set proper perms
 for script in *.sh; do
     # Check if the file is executable
     if [[ -x "$script" ]]; then
-        echo "Executing $script"
-        ./"$script"
+        echo "Checking permissions for $script"
+        continue
     else
         # Set execute permissions and then execute if its not an executable
-        echo "Setting execute permission for $script and executing"
+        echo "Setting execute permission for $script"
         chmod +x "$script"
-        ./"$script"
+        continue
+    fi
+done
+sleep 2
 
 
 # check if all necessary tools are installed:
 echo "making sure that all tools are installed...."
 echo ""
 sleep 1
-install.sh
+./install.sh
 echo ""
 echo "done... moving onto step 1"
 sleep 1
@@ -52,13 +61,12 @@ echo ""
 for script in src/*.sh; do
     # Check if the file is executable
     if [[ -x "$script" ]]; then
-        echo "Executing $script"
-        ./src/"$script"
+        echo "checking permissions for $script"
+        continue
     else
         # Set execute permissions and then execute if its not an executable
-        echo "Setting execute permission for $script and executing"
+        echo "Setting execute permission for $script.."
         chmod +x "$script"
-        ./src/"$script"
     fi
 done
 sleep 2
@@ -73,13 +81,13 @@ if [ -z "$domain" ]; then
 fi
 
 # Source the configuration file
-source src/config.sh
+source ./src/config.sh
 
 #let's start with the subdomain enumeration
 echo "Enumerating subdomains, please wait......"
 echo ""
 sleep 1
-./src/subdomains.sh $domain $output
+./src/subdomains.sh $domain
 echo ""
 sleep 1
 echo ""
@@ -96,10 +104,10 @@ echo ""
 sleep 1
 
 # Check for subdomain takeover
-echo "checking for subdomain takeover...."
+echo "checking for subdomain takeover, please wait a few minutes....."
 sleep 1
 echo ""
-subzy run --targets $output > $subtakeover
+subzy run --targets $sorted  >> $subtakeover
 echo ""
 echo "results saved in $subtakover" 
 sleep 1
@@ -109,7 +117,7 @@ echo ""
 echo "checking for live subdomains....... [also grabbing ip, technology used, status code, and content length..]"
 sleep 1
 echo ""
-cat $live | httpx -sc -cl -ip -td -v > $live
+cat $sorted | httpx -sc -cl -ip -td -v > $live
 echo "Output can be found in $live..."
 echo ""
 sleep 1
@@ -117,7 +125,7 @@ echo ""
 
 
 # Vuln scan the live subdomains with nuclei
-./src/vulnscan.sh
+./src/vulnscan.sh $domain
 echo ""
 sleep 1
 echo ""
@@ -127,7 +135,7 @@ echo ""
 echo "starting portscan....."
 sleep 1
 echo ""
-./src/portscan.sh
+./src/portscan.sh $domain
 echo ""
 echo "completed, portscan results can be found in $nmap.."
 sleep 1
@@ -137,8 +145,12 @@ echo ""
 # Moving on to directory brute force
 echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid being rate limited)"
 echo ""
-./src/directory_enum.sh
+./src/directory_enum.sh $domain
 echo ""
 echo "directory results can be found in $directories"
 echo ""
 sleep 1
+
+### TO DO
+# Date is not working correctly, need to find a better way to do this...
+# carry over the domain

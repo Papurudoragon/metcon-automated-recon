@@ -4,7 +4,7 @@
 
 # Generating a timestamp for the current date and time
 # Format: YYYY-MM-DD_HH-MM-SS
-date=$(date +"%Y-%m-%d_%H-%M-%S")
+date=$(date +"%Y-%m-%d")
 
 # mkdir a directory called results/
 # Check if the results/ directory does not exist
@@ -36,4 +36,4 @@ nuclei="results/nuclei_results_$date.txt"
 directories="results/spider_$date.txt"
 
 # nmap results
-nmap="results/namp_$date.txt
+nmap="results/namp_$date.txt"

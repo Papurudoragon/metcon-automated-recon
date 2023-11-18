@@ -2,9 +2,11 @@
 
 # this is the vuln scanner with nuclei
 
+# pass $domain flag from main
+domain=$1
+
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
 
 
 # First update nuclei templates
