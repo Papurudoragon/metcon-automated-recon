@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo"██   ██ █████ █████ █████ █████ ██   █"
-echo"█ █ █ █ █       █   █     █   █ █ █  █"
-echo"█  █  █ ███     █   █     █   █ █  █ █"
-echo"█     █ █       █   █     █   █ █   ██"
-echo"█     █ █████   █   █████ █████ █    █"
+echo "██   ██ █████ █████ █████ █████ ██   █"
+echo "█ █ █ █ █       █   █     █   █ █ █  █"
+echo "█  █  █ ███     █   █     █   █ █  █ █"
+echo "█     █ █       █   █     █   █ █   ██"
+echo "█     █ █████   █   █████ █████ █    █"
 
 echo "A Methodology script by ViPv4 (Papv2)"
 sleep 2
@@ -35,6 +35,9 @@ for script in *.sh; do
         echo "Setting execute permission for $script and executing"
         chmod +x "$script"
         ./"$script"
+    fi
+done
+sleep 2
 
 
 # check if all necessary tools are installed:
