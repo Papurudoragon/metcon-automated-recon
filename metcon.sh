@@ -142,7 +142,3 @@ echo ""
 echo "directory results can be found in $directories"
 echo ""
 sleep 1
-
-
-
-done
