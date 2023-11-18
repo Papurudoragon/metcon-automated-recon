@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
+source ~/.bash_profile 
+
 
 # Using the variables, we can run several commands for subdomain enum
-subfinder -d $domain -v > $output
-sublist3r -d $domain -v >> $output
-amass enum -passive -d $domain >> $output
-assetfinder --subs-only $domain >> $output
-findomain -t $domains >> $output
+sudo subfinder -d $domain -v > $output
+sudo sublist3r -d $domain -v >> $output
+sudo amass enum -passive -d $domain >> $output
+sudo assetfinder --subs-only $domain >> $output
+sudo findomain -t $domains >> $output
 

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
 
 # Go Spider spidering -c 5 limits reqs to 2 req/ps (this helps with ratelimiting)
 echo "Starting gospider directory enumeration (this may take a while...)"

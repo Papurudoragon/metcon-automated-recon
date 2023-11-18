@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
 
 # coming soon...

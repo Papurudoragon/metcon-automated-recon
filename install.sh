@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the configuration file
+source ./src/config.sh
+
 # Function to install Go
 install_go() {
     echo "Installing Go..."

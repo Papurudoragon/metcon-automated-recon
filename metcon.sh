@@ -1,11 +1,15 @@
 #!/bin/bash
 
+echo ""
+echo ""
 echo "██   ██ █████ █████ █████ █████ ██   █"
 echo "█ █ █ █ █       █   █     █   █ █ █  █"
 echo "█  █  █ ███     █   █     █   █ █  █ █"
 echo "█     █ █       █   █     █   █ █   ██"
 echo "█     █ █████   █   █████ █████ █    █"
 
+echo ""
+echo ""
 echo "A Methodology script by ViPv4 (Papv2)"
 sleep 2
 echo ""
@@ -17,24 +21,24 @@ echo "The script will take quite a bit of time to complete, please allow adequat
 sleep 3
 echo ""
 
-# We need to run as root for this
-# Check if the script is running as root (sudo privileges)
-if [ "$(id -u)" != "0" ]; then
-    echo "This script must be run as root. Please run with sudo."
-    exit 1
-fi
+# We need to run as root for this ----> borks things for now
+# # Check if the script is running as root (sudo privileges)
+# if [ "$(id -u)" != "0" ]; then
+#     echo "This script must be run as root. Please run with sudo."
+#     exit 1
+# fi
 
 # Iterate through all .sh files in the main directory and set proper perms
 for script in *.sh; do
     # Check if the file is executable
     if [[ -x "$script" ]]; then
-        echo "Executing $script"
-        ./"$script"
+        echo "Checking permissions for $script"
+        continue
     else
         # Set execute permissions and then execute if its not an executable
-        echo "Setting execute permission for $script and executing"
+        echo "Setting execute permission for $script"
         chmod +x "$script"
-        ./"$script"
+        continue
     fi
 done
 sleep 2
@@ -55,13 +59,12 @@ echo ""
 for script in src/*.sh; do
     # Check if the file is executable
     if [[ -x "$script" ]]; then
-        echo "Executing $script"
-        ./src/"$script"
+        echo "checking permissions for $script"
+        continue
     else
         # Set execute permissions and then execute if its not an executable
-        echo "Setting execute permission for $script and executing"
+        echo "Setting execute permission for $script.."
         chmod +x "$script"
-        ./src/"$script"
     fi
 done
 sleep 2
@@ -76,7 +79,7 @@ if [ -z "$domain" ]; then
 fi
 
 # Source the configuration file
-source src/config.sh
+source ./src/config.sh
 
 #let's start with the subdomain enumeration
 echo "Enumerating subdomains, please wait......"
@@ -145,3 +148,6 @@ echo ""
 echo "directory results can be found in $directories"
 echo ""
 sleep 1
+
+### TO DO
+# Date is not working correctly, need to find a better way to do this...

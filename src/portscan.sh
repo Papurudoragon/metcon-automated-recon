@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Source the configuration file
-source config.sh
-source ../metcon.sh
+source ./src/config.sh
 
 # Nmap
-nmap -sS -sU -T4 -A -v $domain -o $nmap
+sudo nmap -sS -sU -T4 -A -v $domain -o $nmap
