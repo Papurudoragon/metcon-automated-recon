@@ -23,21 +23,33 @@ install_basic_utility "tar" "sudo apt-get install tar -y"
 # Function to install Go
 install_go() {
     echo "Installing Go..."
-
     # Fetch the latest version of Go
-    local go_url=$(curl -s https://go.dev/dl/ | grep -oP 'https://dl.google.com/go/go[0-9]+\.[0-9]+\.[0-9]+\.linux-amd64.tar.gz' | head -1)
 
-    # Download and extract Go
-    wget -q -O go.tar.gz $go_url
+    # Hard-coded URL for the specific version of Go ---> need to update this later to be dynamic
+    go_url="https://go.dev/dl/go1.21.4.linux-amd64.tar.gz"
+
+    # Download the specified version of Go
+    echo "Downloading Go from $go_url..."
+    wget -O go.tar.gz $go_url
+
+    # Check if the download was successful
+    if [ ! -f go.tar.gz ]; then
+        echo "Failed to download Go."
+        exit 1
+    fi
+
+    echo "Download completed."
+    sleep 1
+
+    echo "Extracting Go..."
     sudo tar -C /usr/local -xzf go.tar.gz
+    if [ $? -ne 0 ]; then
+        echo "Failed to extract Go."
+        return 1
+    fi
+
     rm go.tar.gz
-
-    ## Set Go environment variables -----> I do not want to cause permanent changes with this method.
-    #echo "export PATH=\$PATH:/usr/local/go/bin:\$HOME/go/bin" >> "$HOME/.bashrc"
-    #echo "export GOPATH=\$HOME/go" >> "$HOME/.bashrc"
-
-    # Source .bashrc to update current session
-    #source "$HOME/.bashrc"
+    echo "Go installed successfully."
 }
 
 # Function to check and install a tool
