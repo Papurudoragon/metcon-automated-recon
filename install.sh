@@ -26,18 +26,27 @@ install_go() {
 
     # Fetch the latest version of Go
     local go_url=$(curl -s https://go.dev/dl/ | grep -oP 'https://dl.google.com/go/go[0-9]+\.[0-9]+\.[0-9]+\.linux-amd64.tar.gz' | head -1)
+    if [ -z "$go_url" ]; then
+        echo "Failed to find Go download URL."
+        return 1
+    fi
 
-    # Download and extract Go
-    wget -q -O go.tar.gz $go_url
+    echo "Downloading Go from $go_url..."
+    wget -O go.tar.gz $go_url
+    if [ ! -f go.tar.gz ]; then
+        echo "Failed to download Go."
+        return 1
+    fi
+
+    echo "Extracting Go..."
     sudo tar -C /usr/local -xzf go.tar.gz
+    if [ $? -ne 0 ]; then
+        echo "Failed to extract Go."
+        return 1
+    fi
+
     rm go.tar.gz
-
-    ## Set Go environment variables -----> I do not want to cause permanent changes with this method.
-    #echo "export PATH=\$PATH:/usr/local/go/bin:\$HOME/go/bin" >> "$HOME/.bashrc"
-    #echo "export GOPATH=\$HOME/go" >> "$HOME/.bashrc"
-
-    # Source .bashrc to update current session
-    #source "$HOME/.bashrc"
+    echo "Go installed successfully."
 }
 
 # Function to check and install a tool
