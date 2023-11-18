@@ -29,5 +29,5 @@ sleep 1
 amass enum -passive -d $domain -v >> $output
 sleep 1
 ## sudo assetfinder --subs-only $domain >> $output --> install path not specified
-findomain -t $domains -v >> $output
-sleep 1
+# findomain -t $domains -v >> $output ---> need to work on this
+# sleep 1
