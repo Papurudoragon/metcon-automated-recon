@@ -3,6 +3,23 @@
 # Source the configuration file
 source ./src/config.sh
 
+# Check and install basic utilities
+install_basic_utility() {
+    local utility=$1
+    local install_cmd=$2
+
+    if ! command -v $utility &> /dev/null; then
+        echo "$utility is not installed, installing..."
+        eval $install_cmd
+    else
+        echo "$utility is already installed."
+    fi
+}
+
+# Check and install wget and tar if not present
+install_basic_utility "wget" "sudo apt-get install wget -y"
+install_basic_utility "tar" "sudo apt-get install tar -y"
+
 # Function to install Go
 install_go() {
     echo "Installing Go..."

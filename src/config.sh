@@ -14,7 +14,7 @@ if [ ! -d "results" ]; then
     echo "Created directory 'results'"
 else
     # Directory already exists
-    echo "Directory 'results' already exists"
+    echo ""
 fi
 
 # Defining the output file name

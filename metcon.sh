@@ -17,6 +17,10 @@ echo ""
 
 source ./src/config.sh
 
+# Prompt for sudo password at the beginning
+echo "Please enter your password to proceed."
+sudo -v
+
 # This script goes through a recon methodology
 # The script will take quite a bit of time to complete, please allow up to 8 hours for full completion.
 echo "The script will take quite a bit of time to complete, please allow adequate time for full completion."
