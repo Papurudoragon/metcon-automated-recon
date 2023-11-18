@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Function to install Go
 install_go() {

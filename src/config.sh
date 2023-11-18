@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # config.sh
 
 # Generating a timestamp for the current date and time

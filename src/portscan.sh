@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # Source the configuration file
 source config.sh
