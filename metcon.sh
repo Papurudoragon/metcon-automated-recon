@@ -151,7 +151,7 @@ echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid be
 echo ""
 ./src/directory_enum.sh $domain
 echo ""
-echo "directory results can be found in $directories"
+echo "directory results can be found in ./gospider/"
 echo ""
 sleep 1
 
