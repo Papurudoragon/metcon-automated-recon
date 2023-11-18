@@ -1,0 +1,15 @@
+
+Tools required to run metcon.
+All of these tools will get installed automatically.
+
+golang
+subfinder
+sublist3r
+amass
+assetfinder
+findomain
+subzy
+httpx
+nuclei
+nmap
+gospider
