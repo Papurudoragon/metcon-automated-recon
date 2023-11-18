@@ -49,9 +49,7 @@ export GOPATH=$HOME/go
 declare -A tools_install_cmds
 declare -A tools_install_cmds
 tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
-tools_install_cmds[sublist3r]="sudo apt-get install sublist3r -y"
 tools_install_cmds[amass]="sudo snap install amass"
-tools_install_cmds[assetfinder]="go install -v github.com/tomnomnom/assetfinder@latest"
 tools_install_cmds[findomain]="wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux -O /usr/local/bin/findomain && chmod +x /usr/local/bin/findomain"
 tools_install_cmds[subzy]="go install -v github.com/lukasikic/subzy@latest"
 tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"

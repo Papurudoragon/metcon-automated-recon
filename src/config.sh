@@ -4,7 +4,7 @@
 
 # Generating a timestamp for the current date and time
 # Format: YYYY-MM-DD_HH-MM-SS
-date=$(date +"%Y-%m-%d_%H-%M-%S")
+date=$(date +"%Y-%m-%d")
 
 # mkdir a directory called results/
 # Check if the results/ directory does not exist

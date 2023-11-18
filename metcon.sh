@@ -15,6 +15,8 @@ sleep 2
 echo ""
 echo ""
 
+source ./src/config.sh
+
 # This script goes through a recon methodology
 # The script will take quite a bit of time to complete, please allow up to 8 hours for full completion.
 echo "The script will take quite a bit of time to complete, please allow adequate time for full completion."
@@ -48,7 +50,7 @@ sleep 2
 echo "making sure that all tools are installed...."
 echo ""
 sleep 1
-install.sh
+./install.sh
 echo ""
 echo "done... moving onto step 1"
 sleep 1
@@ -85,7 +87,7 @@ source ./src/config.sh
 echo "Enumerating subdomains, please wait......"
 echo ""
 sleep 1
-./src/subdomains.sh $domain $output
+./src/subdomains.sh $domain
 echo ""
 sleep 1
 echo ""
@@ -102,10 +104,10 @@ echo ""
 sleep 1
 
 # Check for subdomain takeover
-echo "checking for subdomain takeover...."
+echo "checking for subdomain takeover, please wait a few minutes....."
 sleep 1
 echo ""
-subzy run --targets $output > $subtakeover
+subzy run --targets $sorted  >> $subtakeover
 echo ""
 echo "results saved in $subtakover" 
 sleep 1
@@ -115,7 +117,7 @@ echo ""
 echo "checking for live subdomains....... [also grabbing ip, technology used, status code, and content length..]"
 sleep 1
 echo ""
-cat $live | httpx -sc -cl -ip -td -v > $live
+cat $sorted | httpx -sc -cl -ip -td -v > $live
 echo "Output can be found in $live..."
 echo ""
 sleep 1
@@ -123,7 +125,7 @@ echo ""
 
 
 # Vuln scan the live subdomains with nuclei
-./src/vulnscan.sh
+./src/vulnscan.sh $domain
 echo ""
 sleep 1
 echo ""
@@ -133,7 +135,7 @@ echo ""
 echo "starting portscan....."
 sleep 1
 echo ""
-./src/portscan.sh
+./src/portscan.sh $domain
 echo ""
 echo "completed, portscan results can be found in $nmap.."
 sleep 1
@@ -143,7 +145,7 @@ echo ""
 # Moving on to directory brute force
 echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid being rate limited)"
 echo ""
-./src/directory_enum.sh
+./src/directory_enum.sh $domain
 echo ""
 echo "directory results can be found in $directories"
 echo ""
@@ -151,3 +153,4 @@ sleep 1
 
 ### TO DO
 # Date is not working correctly, need to find a better way to do this...
+# carry over the domain
