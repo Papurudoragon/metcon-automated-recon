@@ -32,8 +32,8 @@ live="results/live_sub_tech_$date.txt"
 #nuclei scan results
 nuclei="results/nuclei_results_$date.txt"
 
-# spider results
-directories="results/spider_$date.txt"
+# # spider results
+# directories="results/spider_$date.txt" --> not needed
 
 # nmap results
 nmap="results/namp_$date.txt"

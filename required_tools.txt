@@ -13,3 +13,5 @@ httpx
 nuclei
 nmap
 gospider
+wget
+tar
