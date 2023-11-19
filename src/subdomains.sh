@@ -3,6 +3,10 @@
 # pass $domain flag from main
 domain=$1
 
+# set PATH
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
+
 # added .bash_profile for pathing
 BASH_PROFILE="$HOME/.bash_profile"
 

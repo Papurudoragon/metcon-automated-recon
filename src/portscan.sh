@@ -7,4 +7,4 @@ domain=$1
 source ./src/config.sh
 
 # Nmap
-sudo nmap -sC -sV -T4 -A -v $domain -oN $nmap
+nmap -sC -sV -T4 -A -v $domain -oN $nmap
