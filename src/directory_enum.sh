@@ -28,7 +28,7 @@ cat $sorted | httpx >> gospider_formated_urls.txt
 
 echo "Starting gospider directory enumeration (this may take a while...)"
 sleep 1
-gospider -s gospider_formated_urls.txt -c 2 -d 3 --robots -o ./gospider/
+gospider -S gospider_formated_urls.txt -c 2 -d 3 -o ./gospider/
 sleep 2
 
 rm gospider_formated_urls.txt
