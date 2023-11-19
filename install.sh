@@ -19,6 +19,7 @@ install_basic_utility() {
 # Check and install wget and tar if not present
 install_basic_utility "wget" "sudo apt-get install wget -y"
 install_basic_utility "tar" "sudo apt-get install tar -y"
+install_basic_utility "snapd" "sudo apt-get install snapd -y"
 
 # Function to install Go
 install_go() {
