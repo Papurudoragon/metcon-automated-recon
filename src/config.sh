@@ -36,4 +36,4 @@ nuclei="results/nuclei_results_$date.txt"
 # directories="results/spider_$date.txt" --> not needed
 
 # nmap results
-nmap="results/namp_$date.txt"
+nmap="results/nmap_$date.txt"
