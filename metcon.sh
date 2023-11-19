@@ -17,7 +17,7 @@ echo ""
 
 source ./src/config.sh
 
-# Prompt for sudo password at the beginning
+# Prompt for sudo password at the beginning.
 echo "Please enter your password to proceed."
 sudo -v
 

@@ -4,7 +4,7 @@ Created by ViPv4 (Papv2)
 
 This tool is still in progress....
 
-Usage: `metcon.sh domain`
+Usage: `./metcon.sh domain`
 
 
 Compatible distros: Ubuntu based (Debian, etc)
