@@ -81,7 +81,7 @@ declare -A tools_install_cmds
 tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
 tools_install_cmds[amass]="sudo snap install amass"
 tools_install_cmds[findomain]="wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux -O /usr/local/bin/findomain && chmod +x /usr/local/bin/findomain"
-tools_install_cmds[subzy]="go install -v github.com/lukasikic/subzy@latest"
+tools_install_cmds[subzy]="go install -v github.com/LukaSikic/subzy@latest"
 tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
 tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
 tools_install_cmds[nmap]="sudo apt-get install nmap -y"
