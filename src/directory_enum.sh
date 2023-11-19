@@ -3,6 +3,10 @@
 # pass $domain flag from main
 domain=$1
 
+#set PATH
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
+
 # Source the configuration file
 source ./src/config.sh
 

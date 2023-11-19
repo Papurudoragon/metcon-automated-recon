@@ -5,6 +5,11 @@
 # pass $domain flag from main
 domain=$1
 
+# set PATH
+
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
+
 # Source the configuration file
 source ./src/config.sh
 
@@ -12,7 +17,6 @@ source ./src/config.sh
 # First update nuclei templates
 nuclei -update-templates
 sleep 2
-
 
 # Not sure where Nuclei will isntall its templates so here are some common locations where Nuclei templates might be stored
 common_paths=(
