@@ -134,13 +134,6 @@ sleep 1
 echo ""
 
 
-# Vuln scan the live subdomains with nuclei
-./src/vulnscan.sh $domain
-echo ""
-sleep 1
-echo ""
-
-
 # port scan
 echo "starting portscan....."
 sleep 1
@@ -161,6 +154,17 @@ echo "directory results can be found in ./gospider/"
 echo ""
 sleep 1
 
+# Vuln scan the live subdomains with nuclei
+./src/vulnscan.sh $domain
+echo ""
+sleep 1
+echo ""
+
+
 ### TO DO
-# Date is not working correctly, need to find a better way to do this...
-# carry over the domain
+# add revealjs project
+# add flags and a help page eventually
+# add a flag to better view the data (db?)
+# add more tools for more diverse results
+# add support for more OS outside of ubuntu (install.sh)
+# convert the tool to golang
