@@ -60,7 +60,10 @@ install_tool() {
 
     if ! command -v $tool &> /dev/null; then
         echo "$tool could not be found, installing..."
-        eval $install_cmd
+        if ! $install_cmd; then
+            echo "Failed to install $tool. Please check the installation command or your environment."
+            return 1
+        fi
     else
         echo "$tool is already installed."
     fi
@@ -72,7 +75,6 @@ if ! command -v go &> /dev/null; then
 fi
 
 # Tools and their installation commands
-declare -A tools_install_cmds
 declare -A tools_install_cmds
 tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
 tools_install_cmds[amass]="sudo snap install amass"
