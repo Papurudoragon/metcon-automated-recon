@@ -15,3 +15,5 @@ nmap
 gospider
 wget
 tar
+gau
+snapd
