@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if the script is being run as root (sudo)
+if [ "$(id -u)" -eq 0 ]; then
+    echo "This script should not be run as root as it will bork env variables. Please run without sudo."
+    exit 1
+fi
+
 echo ""
 echo ""
 echo "██   ██ █████ █████ █████ █████ ██   █"
