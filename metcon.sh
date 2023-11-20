@@ -124,7 +124,7 @@ sleep 1
 echo ""
 
 # Check and verify that the subdomains are live.. Also include the technologies used, status codes, and content length
-echo "checking for live subdomains....... [also grabbing ip, technology used, status code, and content length..]"
+echo "checking for live subdomains......."
 sleep 1
 echo ""
 cat $sorted | httpx > $live
