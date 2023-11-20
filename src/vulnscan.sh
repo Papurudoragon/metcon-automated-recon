@@ -53,4 +53,4 @@ fi
 sleep 2
 echo "running nuclei scan..."
 sleep 2
-nuclei -l $live -t $TEMPLATES_PATH/http/cves,$TEMPLATES_PATH/http/vulnerabilities,$TEMPLATES_PATH/http/exposed-panels/,$TEMPLATES_PATH/http/misconfiguration/,$TEMPLATES_PATH/javascript/cves,$TEMPLATES_PATH/javascript/default-logins  -o $nuclei
+nuclei -l $live -t $TEMPLATES_PATH/http/cves,$TEMPLATES_PATH/http/vulnerabilities,$TEMPLATES_PATH/http/exposed-panels/,$TEMPLATES_PATH/http/misconfiguration/,$TEMPLATES_PATH/javascript/cves,$TEMPLATES_PATH/javascript/default-logins -c 5 -o $nuclei
