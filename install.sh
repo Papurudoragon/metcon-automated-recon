@@ -71,10 +71,6 @@ if ! command -v go &> /dev/null; then
     install_go
 fi
 
-# Ensure GOPATH and PATH are set correctly
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-export GOPATH=$HOME/go
-
 # Tools and their installation commands
 declare -A tools_install_cmds
 declare -A tools_install_cmds
@@ -86,8 +82,13 @@ tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/h
 tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
 tools_install_cmds[nmap]="sudo apt-get install nmap -y"
 tools_install_cmds[gospider]="go install -v github.com/jaeles-project/gospider@latest"
+tools_install_cmds[gau]="go install github.com/lc/gau/v2/cmd/gau@latest"
 
 # Check and install each tool
 for tool in "${!tools_install_cmds[@]}"; do
     install_tool $tool "${tools_install_cmds[$tool]}"
 done
+
+# Ensure GOPATH and PATH are set correctly
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
