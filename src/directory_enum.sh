@@ -32,5 +32,5 @@ sleep 1
 
 echo "Starting gospider directory enumeration (this may take a while...)"
 sleep 1
-gospider -S $live -c 2 -d 3 -o ./gospider/
+gospider -S $live -c 2 -d 0 --js --sitemap -v -q --other-source -o ./gospider/
 sleep 2
