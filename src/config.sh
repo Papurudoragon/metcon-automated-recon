@@ -27,7 +27,7 @@ sorted="results/sorted_subdomains_$date.txt"
 subtakeover="results/subdomain_takeover_check_$date.txt"
 
 # live subdomains
-live="results/live_sub_tech_$date.txt"
+live="results/live_sub_$date.txt"
 
 #nuclei scan results
 nuclei="results/nuclei_results_$date.txt"
@@ -37,3 +37,6 @@ nuclei="results/nuclei_results_$date.txt"
 
 # nmap results
 nmap="results/nmap_$date.txt"
+
+# dir search
+dir_passive="results/directory_passive_$date.txt"

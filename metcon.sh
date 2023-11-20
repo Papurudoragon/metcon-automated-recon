@@ -127,7 +127,7 @@ echo ""
 echo "checking for live subdomains....... [also grabbing ip, technology used, status code, and content length..]"
 sleep 1
 echo ""
-cat $sorted | httpx -sc -cl -ip -td -v > $live
+cat $sorted | httpx > $live
 echo "Output can be found in $live..."
 echo ""
 sleep 1
