@@ -81,13 +81,21 @@ fi
 # Tools and their installation commands
 declare -A tools_install_cmds
 tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+sleep 1
 tools_install_cmds[amass]="sudo snap install amass"
+sleep 1
 tools_install_cmds[findomain]="wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux -O /usr/local/bin/findomain && chmod +x /usr/local/bin/findomain"
+sleep 1
 tools_install_cmds[subzy]="go install -v github.com/LukaSikic/subzy@latest"
+sleep 1
 tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
+sleep 1
 tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
+sleep 1
 tools_install_cmds[nmap]="sudo apt-get install nmap -y"
+sleep 1
 tools_install_cmds[gospider]="go install -v github.com/jaeles-project/gospider@latest"
+sleep 1
 tools_install_cmds[gau]="go install github.com/lc/gau/v2/cmd/gau@latest"
 
 # Check and install each tool
