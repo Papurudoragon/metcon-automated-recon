@@ -25,7 +25,7 @@ fi
 # start with passive subdomain enum
 echo "starting passive directory search..."
 sleep 1
-gau "$domain" | awk -F/ '{print $3"/"$4}' | sort -u >> $dir_passive
+gau "$domain" | awk -F/ '{print $3"/"$4}' | sort -u > $dir_passive
 echo "Directories and paths have been saved to $dir_passive"
 sleep 1
 
