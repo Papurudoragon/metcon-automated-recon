@@ -23,6 +23,7 @@ echo ""
 
 source ./src/config.sh
 sudo chmod +x ./src/directory_enum.sh
+sudo chmod 666 $dir_passive
 
 # Prompt for sudo password at the beginning.
 echo "Please enter your password to proceed."
