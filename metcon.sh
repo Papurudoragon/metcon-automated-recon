@@ -83,6 +83,7 @@ sleep 2
 
 # Assigning the first command-line argument to 'domain'
 domain=$1
+domain_folder="${domain%.com}"
 
 # Check if domain argument was provided
 if [ -z "$domain" ]; then
@@ -145,23 +146,35 @@ sleep 1
 echo ""
 
 
-# Moving on to directory brute force
-echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid being rate limited)"
+# Moving on to git_dorking
+echo "starting github doring... (requires github api..)"
 echo ""
-./src/directory_enum.sh $domain
+sleep 1
+./src/github_dorking.sh $domain
 echo ""
-echo "directory results can be found in ./gospider/"
+echo "directory results can be found in ./$git_dorking/"
 echo ""
 sleep 1
 
 # Vuln scan the live subdomains with nuclei
+echo "starting nuclei vuln scanning..."
+sleep 1
 ./src/vulnscan.sh $domain
 echo ""
 sleep 1
 echo ""
 
+# Moving on to directory brute force
+echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid being rate limited)"
+echo ""
+./src/directory_enum.sh $domain
+echo ""
+echo "directory results can be found in ./$domain_folder/gospider/"
+echo ""
+sleep 1
 
 ### TO DO
+# add google doring (will this be captcha'd?)
 # add revealjs project
 # add flags and a help page eventually
 # add a flag to better view the data (db?)

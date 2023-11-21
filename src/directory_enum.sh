@@ -2,6 +2,7 @@
 
 # pass $domain flag from main
 domain=$1
+domain_folder="${domain%.com}"
 
 #set PATH
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
@@ -13,7 +14,7 @@ source ./src/config.sh
 # create gospider directory
 if [ ! -d "gospider" ]; then
     # Directory does not exist, so create it
-    mkdir gospider
+    mkdir $domain_folder/gospider
     echo "Created directory 'gospider'"
 else
     # Directory already exists
@@ -32,5 +33,5 @@ sleep 1
 
 echo "Starting gospider directory enumeration (this may take a while...)"
 sleep 1
-gospider -S $live -c 2 -d 0 --js --sitemap -v -q --other-source -o ./gospider/
+gospider -S $live -c 2 -d 0 --js --sitemap -v -q --other-source -o ./$domain_folder/gospider/
 sleep 2
