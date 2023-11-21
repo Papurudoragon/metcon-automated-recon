@@ -60,7 +60,7 @@ sleep 2
 echo "making sure that all tools are installed...."
 echo ""
 sleep 1
-./install.sh
+./install.sh $domain
 echo ""
 echo "done... moving onto step 1"
 sleep 1
