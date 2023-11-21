@@ -22,6 +22,7 @@ echo ""
 echo ""
 
 source ./src/config.sh
+sudo chmod +x ./src/directory_enum.sh
 
 # Prompt for sudo password at the beginning.
 echo "Please enter your password to proceed."
@@ -65,6 +66,9 @@ echo ""
 echo "done... moving onto step 1"
 sleep 1
 echo ""
+
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOPATH=$HOME/go
 
 # Set proper permissions for execution in src
 # Iterate through all .sh files in the src directory
