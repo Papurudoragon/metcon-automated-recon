@@ -64,6 +64,7 @@ install_tool() {
 
     if ! command -v $tool &> /dev/null; then
         echo "$tool could not be found, installing..."
+        eval $install_cmd
         if ! $install_cmd; then
             echo "Failed to install $tool. Please check the installation command or your environment."
             return 1
@@ -79,23 +80,16 @@ if ! command -v go &> /dev/null; then
 fi
 
 # Tools and their installation commands
-install_tool "subfinder" "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
-sleep 1
-install_tool "amass" "sudo snap install amass"
-sleep 1
-install_tool "findomain" "wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux -O /usr/local/bin/findomain && chmod +x /usr/local/bin/findomain"
-sleep 1
-install_tool "subzy" "go install -v github.com/LukaSikic/subzy@latest"
-sleep 1
-install_tool "httpx" "go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
-sleep 1
-install_tool "nuclei" "go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
-sleep 1
-install_tool "nmap" "sudo apt-get install nmap -y"
-sleep 1
-install_tool "gospider" "go install -v github.com/jaeles-project/gospider@latest"
-sleep 1
-install_tool "gau" "go install github.com/lc/gau/v2/cmd/gau@latest"
+declare -A tools_install_cmds
+tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+tools_install_cmds[amass]="sudo snap install amass"
+tools_install_cmds[findomain]="wget https://github.com/Edu4rdSHL/findomain/releases/latest/download/findomain-linux -O /usr/local/bin/findomain && chmod +x /usr/local/bin/findomain"
+tools_install_cmds[subzy]="go install -v github.com/LukaSikic/subzy@latest"
+tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
+tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
+tools_install_cmds[nmap]="sudo apt-get install nmap -y"
+tools_install_cmds[gospider]="go install -v github.com/jaeles-project/gospider@latest"
+tools_install_cmds[gau]="go install github.com/lc/gau/v2/cmd/gau@latest"
 
 # Check and install each tool
 for tool in "${!tools_install_cmds[@]}"; do
