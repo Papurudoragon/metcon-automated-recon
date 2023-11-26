@@ -23,7 +23,10 @@ echo ""
 
 source ./src/config.sh
 sudo chmod +x ./src/directory_enum.sh
-sudo chmod 666 $dir_passive
+sudo chmod 774 *
+sudo chmod 774 ./src/*
+sudo chmod 774 ./src/check_mdi/*
+
 
 # Prompt for sudo password at the beginning.
 echo "Please enter your password to proceed."
@@ -99,7 +102,23 @@ fi
 # Source the configuration file
 source ./src/config.sh
 
-#let's start with the subdomain enumeration
+# Lets start Apex Domain enumeration
+sleep 1
+echo ""
+./src/apex_domain.sh $domain
+echo ""
+echo "output has been saved to $apex_domain"
+echo ""
+sleep 1
+
+# lets grab ASN and prepare for port scanning
+echo ""
+./src/asn_finder.sh $domain
+echo ""
+sleep 1
+echo ""
+
+# now we take the subdomains of the apex domains with subfinder and amass
 echo "Enumerating subdomains, please wait......"
 echo ""
 sleep 1
@@ -152,12 +171,12 @@ echo ""
 
 
 # Moving on to git_dorking
-echo "starting github doring... (requires github api..)"
+echo "skipping github dorking until updates are applied to the script to avoid API rate limiting..... (also requires github api..)"
 echo ""
 sleep 1
-./src/github_dorking.sh $domain
+# ./src/github_dorking.sh $domain
 echo ""
-echo "directory results can be found in ./$git_dorking/"
+# echo "directory results can be found in ./$git_dorking/"
 echo ""
 sleep 1
 
@@ -186,3 +205,11 @@ sleep 1
 # add more tools for more diverse results
 # add support for more OS outside of ubuntu (install.sh)
 # convert the tool to golang
+
+
+
+# Recon Improvements
+## left off at cloud recon -- need to add that and move on
+# Fix the asn_ip findings (just parse the reg asn file for only the ip)
+# fix apex domains (save a copy with only the domains)
+# clean up useless files

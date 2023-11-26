@@ -17,3 +17,5 @@ wget
 tar
 gau
 snapd
+jq
+python3

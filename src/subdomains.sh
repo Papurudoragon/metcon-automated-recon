@@ -28,11 +28,35 @@ source ./src/config.sh
 
 
 # Using the variables, we can run several commands for subdomain enum
-subfinder -d $domain -v >> $output
-sleep 1
+# Loop through each domain in the file
+while IFS= read -r domain; do
+    echo "Running subfinder for domain: $domain"
+    # Run subfinder and append results to the output file
+    subfinder -d "$domain" -v >> "$output"
+done < "$apex_domain"
+sleep 2
+
+
 ## sudo sublist3r -d $domain -v >> $output --> install path not specified
-amass enum -passive -d $domain -v >> $output
-sleep 1
+while IFS= read -r domain; do
+    echo "Running amass for domain: $domain"
+    # Run subfinder and append results to the output file
+    amass enum --passive -d $apex_domain -v >> "$output"
+done < "$apex_domain"
+sleep 2
 ## sudo assetfinder --subs-only $domain >> $output --> install path not specified
 # findomain -t $domains -v >> $output ---> need to work on this
 # sleep 1
+
+
+# shosubgo enumeration --- This should only run if a key is found, else it should skip.
+echo "checking for shodan api key... please save the shodan api key in ~/.shodan_token"
+sleep 3
+key=$(cat ~/.shodan_token 2>/dev/null)
+
+if [ -z "$key" ]; then
+    echo "No Shodan API key found. Skipping Shosubgo."
+else
+    shosubgo -d $domain -s $key >> "$output"
+fi
+

@@ -43,4 +43,12 @@ nmap="$domain_folder/nmap_$date.txt"
 # dir search
 dir_passive="$domain_folders/directory_passive_$date.txt"
 
+# git dorking
 git_dorking="$domain_folder/git_dorking_$date.txt"
+
+# apex domains
+apex_domain="$domain_folder/apex_domains_$date.txt"
+
+# ASN
+asn_ip="$domain_folder/asn_ip_$date.txt"
+asn_findings="$domain_folder/asn_findings_$date.txt"

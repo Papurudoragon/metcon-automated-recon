@@ -79,32 +79,25 @@ declare -a dorks=(
     "filename:.pgpass"
 )
 
-# Function to perform GitHub dorking
-perform_github_dorking() {
-    local domain=$1
-    for dork in "${dorks[@]}"; do
-        echo "Searching for: $dork in domain: $domain"
+####----- This needs to be updated
 
-        # Actual GitHub API search command
-        # This uses 'curl' to make a request to the GitHub API
-        # github token is found in ~./git_access_Token/access_token ---> this needs to be manually added.
-        local search_result=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/search/code?q=${dork}+in:${domain}")
+# # Function to perform GitHub dorking
+# perform_github_dorking() {
+#     local domain=$1
+#     for dork in "${dorks[@]}"; do
+#         echo "Searching for: $dork in domain: $domain"
 
-        # Check if the search_result is empty
-        if [ -z "$search_result" ]; then
-            echo "No results found for dork: $dork on domain: $domain"
-        else
-            echo "Results found for dork: $dork on domain: $domain"
-            # Process the search results as needed
-            echo "$search_result" >> $git_dorking
-        fi
-    done
-}
+#         # Actual GitHub API search command
+#         # This uses 'curl' to make a request to the GitHub API
+#         # github token is found in ~./git_access_Token/access_token ---> this needs to be manually added.
+#         local search_result=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/search/code?q=${dork}+in:${domain}" >> $git_dorking)
+#     done
+# }
 
-# Perform dorking for a given domain
-perform_github_dorking "$domain"
+# # Perform dorking for a given domain
+# perform_github_dorking "$domain"
 
-# Iterate over each dork and perform the search
-for dork in "${DORKS[@]}"; do
-    perform_dorking "$dork"
-done
+# # Iterate over each dork and perform the search
+# for dork in "${DORKS[@]}"; do
+#     perform_dorking "$dork"
+# done

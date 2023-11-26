@@ -98,6 +98,10 @@ tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/
 tools_install_cmds[nmap]="sudo apt-get install nmap -y"
 tools_install_cmds[gospider]="go install -v github.com/jaeles-project/gospider@latest"
 tools_install_cmds[gau]="go install github.com/lc/gau/v2/cmd/gau@latest"
+tools_install_cmds[python3]="sudo apt install python3 -y" 
+tools_install_cmds[jq]="sudo apt install jq -y"
+tools_install_cmds[shosubgo]="go install github.com/incogbyte/shosubgo@latest"
+tools_install_cmds[dnspython]="python3 -m pip install dnspython"
 
 # Check and install each tool
 for tool in "${!tools_install_cmds[@]}"; do
