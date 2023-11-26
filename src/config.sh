@@ -1,39 +1,54 @@
 #!/bin/bash
 
-# config.sh
+# pull the domain for create the dir
+domain=$1
+domain_folder="${domain%.com}"
 
 # Generating a timestamp for the current date and time
 # Format: YYYY-MM-DD_HH-MM-SS
 date=$(date +"%Y-%m-%d")
 
-# mkdir a directory called results/
-# Check if the results/ directory does not exist
-if [ ! -d "results" ]; then
+# mkdir a directory called the domain that user chose
+# Check if the $domain/ directory does not exist
+if [ ! -d "$domain_folder" ]; then
     # Directory does not exist, so create it
-    mkdir results
-    echo "Created directory 'results'"
+    mkdir $domain_folder
+    echo "Created directory '$domain_folder'"
 else
     # Directory already exists
     echo ""
 fi
 
 # Defining the output file name
-output="results/output-$date.txt"
+output="$domain_folder/output-$date.txt"
 
 # sorted subdomains (remove dups)
-sorted="results/sorted_subdomains_$date.txt"
+sorted="$domain_folder/sorted_subdomains_$date.txt"
 
 #subdomain takeover
-subtakeover="results/subdomain_takeover_check_$date.txt"
+subtakeover="$domain_folder/subdomain_takeover_check_$date.txt"
 
 # live subdomains
-live="results/live_sub_tech_$date.txt"
+live="$domain_folder/live_sub_$date.txt"
 
 #nuclei scan results
-nuclei="results/nuclei_results_$date.txt"
+nuclei="$domain_folder/nuclei_results_$date.txt"
 
 # # spider results
 # directories="results/spider_$date.txt" --> not needed
 
 # nmap results
-nmap="results/nmap_$date.txt"
+nmap="$domain_folder/nmap_$date.txt"
+
+# dir search
+dir_passive="$domain_folders/directory_passive_$date.txt"
+
+# git dorking
+git_dorking="$domain_folder/git_dorking_$date.txt"
+
+# apex domains
+apex_domain="$domain_folder/apex_domains_$date.txt"
+
+# ASN
+asn_ip="$domain_folder/asn_ip_$date.txt"
+asn_findings="$domain_folder/asn_findings_$date.txt"

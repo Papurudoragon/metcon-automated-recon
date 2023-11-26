@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# pull the domain for create the dir
+domain=$1
+domain_folder="${domain%.com}"
+
 # Source the configuration file
 source ./src/config.sh
 
@@ -51,7 +55,11 @@ install_go() {
 
     rm go.tar.gz
     echo "Go installed successfully."
-}
+
+    # Ensure GOPATH and PATH are set correctly
+    export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+    export GOPATH=$HOME/go
+    }
 
 # Function to check and install a tool
 install_tool() {
@@ -61,6 +69,10 @@ install_tool() {
     if ! command -v $tool &> /dev/null; then
         echo "$tool could not be found, installing..."
         eval $install_cmd
+        if ! $install_cmd; then
+            echo "Failed to install $tool. Please check the installation command or your environment."
+            return 1
+        fi
     else
         echo "$tool is already installed."
     fi
@@ -71,12 +83,11 @@ if ! command -v go &> /dev/null; then
     install_go
 fi
 
-# Ensure GOPATH and PATH are set correctly
+# Ensure GOPATH and PATH are set correctly ---> just making sure on this one, its a dup for a reason
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOPATH=$HOME/go
 
 # Tools and their installation commands
-declare -A tools_install_cmds
 declare -A tools_install_cmds
 tools_install_cmds[subfinder]="go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
 tools_install_cmds[amass]="sudo snap install amass"
@@ -86,6 +97,11 @@ tools_install_cmds[httpx]="go install -v github.com/projectdiscovery/httpx/cmd/h
 tools_install_cmds[nuclei]="go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
 tools_install_cmds[nmap]="sudo apt-get install nmap -y"
 tools_install_cmds[gospider]="go install -v github.com/jaeles-project/gospider@latest"
+tools_install_cmds[gau]="go install github.com/lc/gau/v2/cmd/gau@latest"
+tools_install_cmds[python3]="sudo apt install python3 -y" 
+tools_install_cmds[jq]="sudo apt install jq -y"
+tools_install_cmds[shosubgo]="go install github.com/incogbyte/shosubgo@latest"
+tools_install_cmds[dnspython]="python3 -m pip install dnspython"
 
 # Check and install each tool
 for tool in "${!tools_install_cmds[@]}"; do

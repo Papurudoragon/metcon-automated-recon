@@ -4,6 +4,7 @@
 
 # pass $domain flag from main
 domain=$1
+domain_folder="${domain%.com}"
 
 # set PATH
 
@@ -53,4 +54,4 @@ fi
 sleep 2
 echo "running nuclei scan..."
 sleep 2
-nuclei -l $live -t $TEMPLATES_PATH -o $nuclei
+nuclei -l $live -t $TEMPLATES_PATH/http/cves,$TEMPLATES_PATH/http/vulnerabilities,$TEMPLATES_PATH/http/exposed-panels/,$TEMPLATES_PATH/http/misconfiguration/,$TEMPLATES_PATH/javascript/cves,$TEMPLATES_PATH/javascript/default-logins,$TEMPLATES_PATH/http/technologies,$TEMPLATES_PATH/http/misconfiguration,$TEMPLATES_PATH/javascript/enumeration/,$TEMPLATES_PATH/javascript/detection/ -c 5 -o $nuclei
