@@ -13,7 +13,7 @@ Compatible distros: Ubuntu based (Debian, etc)
 Features:
 
 <h1>Subdomains Enum (passive)</h1>
-<h1>apex domain enumeration</h1>
+<h1>apex domain enumeration (MDI)</h1>
 <h1>Technologies identification</h1>
 <h1>Basic vuln scans (limited reqs per sec to avoid rate limiting)</h1>
 <h1>Port scan</h1>
