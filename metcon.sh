@@ -545,6 +545,17 @@ echo ""
 sleep 1
 echo ""
 
+
+######################################## Grab all the information possible for csv ######################################
+echo "Grabbing information for CSV"
+echo ""
+sleep 2
+cat $live | httpx -sc -td -websocket -ip -method -title -cl -server -asn >> ./$domain_folder/all_for_csv.txt
+echo ""
+echo ""
+sleep 1
+
+
 ######################################## Moving on to directory brute force ###################################
 echo "starting directory brute forcing... (reqs are set to 2 reqs/ps to avoid being rate limited)"
 echo ""
