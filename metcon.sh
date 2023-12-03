@@ -550,7 +550,7 @@ echo ""
 echo "Grabbing information for CSV"
 echo ""
 sleep 2
-cat $live | httpx -sc -td -websocket -ip -method -title -cl -server -asn >> ./$domain_folder/all_for_csv.txt
+cat $live | httpx -sc -td -websocket -ip -method -title -cl -server >> ./$domain_folder/all_for_csv.txt
 echo ""
 echo ""
 sleep 1
