@@ -19,3 +19,4 @@ gau
 snapd
 jq
 python3
+waymore
