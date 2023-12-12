@@ -216,7 +216,6 @@ tools_install_cmds[jq]="sudo apt install jq -y"
 tools_install_cmds[shosubgo]="go install github.com/incogbyte/shosubgo@latest"
 tools_install_cmds[dnspython]="python3 -m pip install dnspython"
 tools_install_cmds[htmlq]="sudo snap install htmlq"
-tools_install_cmds[waymore]="git clone https://github.com/xnl-h4ck3r/waymore.git"
 
 # install dependencies --- ideally this should run only once but whatever for now
 sleep 1
@@ -355,7 +354,7 @@ sleep 2
 while IFS= read -r domain; do
     echo "Running amass for domain: $domain"
     # Run subfinder and append results to the output file
-    amass enum --passive -d $apex_domain -v >> "$output"
+    amass enum -d $apex_domain -v >> "$output"
 done < "$apex_domain"
 sleep 2
 ## sudo assetfinder --subs-only $domain >> $output --> install path not specified
@@ -560,13 +559,6 @@ cat $live | httpx -sc -td -websocket -ip -method -title -cl -server >> ./$domain
 echo ""
 echo ""
 sleep 1
-
-
-######################################### Grab wayback info ######################################################
-echo ""
-# mv waymore to bin
-# python3 waymore ---> gotta move this to bin first
-
 
 
 
