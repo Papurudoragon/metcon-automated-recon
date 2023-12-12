@@ -345,7 +345,7 @@ source "$BASH_PROFILE"
 while IFS= read -r domain; do
     echo "Running subfinder for domain: $domain"
     # Run subfinder and append results to the output file
-    subfinder -d "$domain" -v >> "$output"
+    subfinder -d "$domain" -v -all >> "$output"
 done < "$apex_domain"
 sleep 2
 
