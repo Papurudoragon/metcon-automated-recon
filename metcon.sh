@@ -219,8 +219,6 @@ tools_install_cmds[htmlq]="sudo snap install htmlq"
 
 # install dependencies --- ideally this should run only once but whatever for now
 sleep 1
-sudo pip3 install -r ./waymore/requirements.txt
-#### need to move this later
 
 # Check and install each tool
 for tool in "${!tools_install_cmds[@]}"; do
