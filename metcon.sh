@@ -314,6 +314,8 @@ echo ""
 echo "sorting the results and making a copy with just the ips..."
 sleep 1
 cut -d ' ' -f 1 $asn_findings > $asn_ip
+sleep 1
+grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" $asn_ip > $asn_ip
 # curl -X GET "https://api.bgpview.io/search?query_term=$domain_folder" | jq -r '.data.ipv4_prefixes[] | "\(.ip)"' >> $asn_ip ---> not used anymore
 echo ""
 echo "output can be found in $asn_ip" 
